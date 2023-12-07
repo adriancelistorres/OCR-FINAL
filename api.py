@@ -100,10 +100,10 @@ def realizar_ocr():
         parte_cortada11 = imagen_recortada_pil.crop(coordenadas_corte11)
 
         ###Segunda Fila###
-        coordenadas_corte12 = (0, 364, 220, 420)
+        coordenadas_corte12 = (0, 364, 220, 440)
         parte_cortada12 = imagen_recortada_pil.crop(coordenadas_corte12)
 
-        coordenadas_corte13 = (382, 364, 650, 420)
+        coordenadas_corte13 = (382, 364, 650, 440)
         parte_cortada13 = imagen_recortada_pil.crop(coordenadas_corte13)
 
         ## Servicios Adicionales ##
@@ -315,8 +315,9 @@ def realizar_ocr():
         # }
 
         data["Servicios"] = {
-            "CantidadLineasMovilesDisponibles": texto_imagenes_sin_en_blanco[0][2],
-            "CargoFijoMaximoPorLineaPack": texto_imagenes_sin_en_blanco[1][1],
+            # "CantidadLineasMovilesDisponibles": texto_imagenes_sin_en_blanco[0][2] if texto_imagenes_sin_en_blanco[0][2] == "l" else "1",
+            "CantidadLineasMovilesDisponibles": "1" if texto_imagenes_sin_en_blanco[0][2] == "l" else texto_imagenes_sin_en_blanco[0][2],
+            "CargoFijoMaximoPorLineaPack": texto_imagenes_sin_en_blanco[1][1],""
             "MetodoDeFacturacionAdelantado": texto_imagenes_sin_en_blanco[2][1],
             "TipoDePlan": texto_imagenes_sin_en_blanco[3][1],
             "CargoFijoMaximoPorLineaMovilSinEquipoFinanciado": texto_imagenes_sin_en_blanco[4][2] if len(texto_imagenes_sin_en_blanco[4]) > 2 else texto_imagenes_sin_en_blanco[4][1],
@@ -330,7 +331,7 @@ def realizar_ocr():
             "MontoDisponibleFinanciamientoAccesorios": texto_imagenes_sin_en_blanco[9][2] if len(texto_imagenes_sin_en_blanco[9]) > 2 else texto_imagenes_sin_en_blanco[9][1],
             "CantidadMesesFinanciamientoAccesorios": texto_imagenes_sin_en_blanco[10][2] if len(texto_imagenes_sin_en_blanco[10]) > 2 else texto_imagenes_sin_en_blanco[10][1],
             "RatioDeFinanciamiento": texto_imagenes_sin_en_blanco[11][1],
-            "TipoClienteVEP": texto_imagenes_sin_en_blanco[12][1]
+            "TipoClienteVEP": texto_imagenes_sin_en_blanco[12][1] if len(texto_imagenes_sin_en_blanco[12]) > 1 else "-"
         }
 
         data["Servicios_Adicionales"] = {
