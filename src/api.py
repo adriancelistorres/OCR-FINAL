@@ -264,6 +264,7 @@ def realizar_ocr():
         'imagen_rearmada8.jpg', 'imagen_rearmada9.jpg', 'imagen_rearmada10.jpg', 'imagen_rearmada11.jpg',
         'imagen_rearmada12.jpg', 'imagen_rearmada13.jpg',
         'imagen_rearmada14.jpg', 'imagen_rearmada15.jpg', 'imagen_rearmada16.jpg', 'imagen_rearmada17.jpg', 'imagen_recortada.png'
+
         ]
 
         for imagen in imagenes_a_eliminar:
