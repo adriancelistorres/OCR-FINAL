@@ -6,8 +6,11 @@ import cv2
 import numpy as np
 import pytesseract
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Habilita CORS para toda la aplicación
+port = int(os.environ.get('PORT', 4000))
 
 @app.route('/realizar-ocr', methods=['POST'])
 def realizar_ocr():
@@ -28,7 +31,7 @@ def realizar_ocr():
         # Convertir la imagen a escala de grises
         gray = cv2.cvtColor(imagen_np, cv2.COLOR_BGR2GRAY)
 
-        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        #pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
         # Utilizar pytesseract para reconocer texto en la imagen
         text = pytesseract.image_to_string(gray)
@@ -348,4 +351,4 @@ def realizar_ocr():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+   app.run(host='0.0.0.0', port=port, debug=True)
