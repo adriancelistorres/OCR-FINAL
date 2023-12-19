@@ -6,6 +6,8 @@ COPY . /app
 
 RUN apt-get update && apt-get install -y tesseract-ocr
 
+RUN apt-get install -y libgl1-mesa-glx
+
 RUN pip install gunicorn
 
 RUN pip install -r requirements.txt
